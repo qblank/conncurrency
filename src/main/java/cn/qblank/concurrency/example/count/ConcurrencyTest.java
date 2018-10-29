@@ -1,4 +1,4 @@
-package cn.qblank.concurrency.test;
+package cn.qblank.concurrency.example.count;
 
 import cn.qblank.concurrency.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;

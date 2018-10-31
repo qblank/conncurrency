@@ -1,10 +1,11 @@
-package cn.qblank.concurrency.commonUnsafe;
+package cn.qblank.concurrency.syncContainer;
 
-import cn.qblank.concurrency.annoations.NotThreadSafe;
+import cn.qblank.concurrency.annoations.ThreadSafe;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
@@ -14,18 +15,18 @@ import java.util.concurrent.Semaphore;
 
 /**
  * @date 2018/10/31
- * HashSet
+ * 同步容器Collections工具类测试Set
  */
 @Slf4j
-@NotThreadSafe
-public class HashSetExample {
+@ThreadSafe
+public class CollectionsExample2 {
 
     //请求综述
     public static int clientTotal = 5000;
 
     public static int threadTotal = 200;
 
-    private static Set<Integer> set = new HashSet<>();
+    private static Set<Integer> set = Collections.synchronizedSet(Sets.newHashSet());
 
 
     public static void main(String[] args) throws Exception{

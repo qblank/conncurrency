@@ -1,12 +1,12 @@
-package cn.qblank.concurrency.commonUnsafe;
+package cn.qblank.concurrency.syncContainer;
 
-import cn.qblank.concurrency.annoations.NotThreadSafe;
+import cn.qblank.concurrency.annoations.ThreadSafe;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Collections;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,18 +14,18 @@ import java.util.concurrent.Semaphore;
 
 /**
  * @date 2018/10/31
- * HashSet
+ * HashTable
  */
 @Slf4j
-@NotThreadSafe
-public class HashSetExample {
+@ThreadSafe
+public class CollectionsExample3 {
 
     //请求综述
     public static int clientTotal = 5000;
 
     public static int threadTotal = 200;
 
-    private static Set<Integer> set = new HashSet<>();
+    private static Map<Integer,Integer> map = Collections.synchronizedMap(Maps.newHashMap());
 
 
     public static void main(String[] args) throws Exception{
@@ -50,10 +50,10 @@ public class HashSetExample {
         }
         countDownLatch.await();
         executorService.shutdown();
-        log.info("size:{}",set.size());
+        log.info("size:{}",map.size());
     }
 
     private static void update(int i) {
-        set.add(i);
+        map.put(i,i);
     }
 }

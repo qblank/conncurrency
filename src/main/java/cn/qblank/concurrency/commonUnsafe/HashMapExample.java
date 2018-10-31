@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 
 /**
  * @date 2018/10/31
- * ArrayList
+ * HashMap
  */
 @Slf4j
 @NotThreadSafe
